@@ -1,0 +1,27 @@
+# Define yourself! This is the author:
+nick: shreyan
+twturl: https://me.shreyanjain.net/tw.txt
+
+# Tweets are appended here.
+twtfile: ~/Dev/ShreyanJain9.github.io/tw.txt
+
+# When fetching feeds over HTTP, add User-Agent header with nick and program version.
+discloseidentity: true
+
+# Include your own posts in the timeline.
+includeyourself: true
+
+# Timeline command
+#   full - display all tweets (default)
+#   new  - only new tweets since last sync
+timeline: full
+
+# Execute some shell command before/after tweeting.
+#hooks:
+#  pre: scp remote:twtxt.txt ~/twtxt.txt
+#  post: scp ~/twtxt.txt remote:twtxt.txt
+
+# Follow some twtxters!
+following:
+  quite: https://lublin.se/twtxt.txt
+  shreyan@mstdn: https://feeds.twtxt.net/@shreyan@mstdn.social/twtxt.txt   
