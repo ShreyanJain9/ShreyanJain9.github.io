@@ -22,3 +22,4 @@ https://twtxt.net/user/shreyan/avatar#offi76wcvenuf72gft32b5uyhrvwcszy2s66xgmthu
 2023-03-03T16:37:02-08:00	(#e5dvpma) Niceee this is cool
 2023-03-03T21:18:57-08:00	no interaction yet smh
 `date -Im`	Good afternoon, twtxt world. This is a really fun way to tweet.
+2023-03-04T20:35:37-08:00	I'm making a Ruby on Rails-based frontend to the Bing API. Check it out at https://tenbluelinks.net
