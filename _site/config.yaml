@@ -1,0 +1,14 @@
+nick: shreyan
+twturl: https://me.shreyanjain.net/tw.txt
+twtfile: ~/Dev/ShreyanJain9.github.io/tw.txt
+following:
+  greta: https://feeds.twtxt.net/@gretathunberg@mastodon.nu/twtxt.txt
+  quite: https://lublin.se/twtxt.txt
+  shreyan@mstdn: https://feeds.twtxt.net/@shreyan@mstdn.social/twtxt.txt
+  shreyan@yarn: https://twtxt.net/user/shreyan/twtxt.txt
+discloseidentity: true
+timeline: full
+hooks:
+  pre: ""
+  post: ""
+includeyourself: true
