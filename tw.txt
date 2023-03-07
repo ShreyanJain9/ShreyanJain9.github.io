@@ -23,3 +23,4 @@ https://twtxt.net/user/shreyan/avatar#offi76wcvenuf72gft32b5uyhrvwcszy2s66xgmthu
 2023-03-03T21:18:57-08:00	no interaction yet smh
 2023-03-04T20:35:37-08:00	I'm making a Ruby on Rails-based frontend to the Bing API. Check it out at https://tenbluelinks.net
 2023-03-04T22:13:33-08:00	I love IndieWeb :)
+2023-03-06T18:40-08:00	Plain-text flat-file microblogging rocks!
