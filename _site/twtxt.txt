@@ -1,0 +1,25 @@
+# Twtxt is an open, distributed microblogging platform that
+# uses human-readable text files, common transport protocols,
+# and free software.
+#
+# Learn more about twtxt at  https://github.com/buckket/twtxt
+#
+# nick        = shreyan
+# url         = https://twtxt.net/user/shreyan/twtxt.txt
+# avatar      = 
+https://twtxt.net/user/shreyan/avatar#offi76wcvenuf72gft32b5uyhrvwcszy2s66xgmthuzhrvlz37ja
+# description = 
+#
+# following   = 5
+##
+# follow = news https://twtxt.net/user/news/twtxt.txt
+# follow = shreyan@yarn https://twtxt.net/user/shreyan/twtxt.txt
+# follow = support https://twtxt.net/user/support/twtxt.txt
+# follow = shreyan@mstdn https://feeds.twtxt.net/@shreyan@mstdn.social/twtxt.txt
+# follow = greta https://feeds.twtxt.net/@gretathunberg@mastodon.nu/twtxt.txt
+2023-03-03T16:06:42-08:00	Hello World
+2023-03-03T16:08:39-08:00	just setting up my twtxt
+2023-03-03T16:37:02-08:00	(#e5dvpma) Niceee this is cool
+2023-03-03T21:18:57-08:00	no interaction yet smh
+2023-03-04T20:35:37-08:00	I'm making a Ruby on Rails-based frontend to the Bing API. Check it out at https://tenbluelinks.net
+2023-03-04T22:13:33-08:00	I love IndieWeb :)
