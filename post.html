@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>POST Request Sender</title>
+</head>
+<body>
+  <h1>Send POST Request</h1>
+  <form id="post-form">
+    <label for="url-input">URL:</label>
+    <input type="text" id="url-input" name="url" required><br><br>
+    <label for="param-table">Parameters:</label>
+    <table id="param-table">
+      <tr>
+        <td><input type="text" name="param-name[]" placeholder="Parameter Name"></td>
+        <td><input type="text" name="param-value[]" placeholder="Parameter Value"></td>
+        <td><button type="button" onclick="addRow()">Add</button></td>
+      </tr>
+    </table>
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    function addRow() {
+      var table = document.getElementById("param-table");
+      var newRow = table.insertRow();
+      var nameCell = newRow.insertCell(0);
+      var valueCell = newRow.insertCell(1);
+      var buttonCell = newRow.insertCell(2);
+      nameCell.innerHTML = '<input type="text" name="param-name[]" placeholder="Parameter Name">';
+      valueCell.innerHTML = '<input type="text" name="param-value[]" placeholder="Parameter Value">';
+      buttonCell.innerHTML = '<button type="button" onclick="deleteRow(this)">Delete</button>';
+    }
+
+    function deleteRow(button) {
+      var row = button.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+    }
+
+    var form = document.getElementById("post-form");
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      var formData = new FormData(form);
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", form.getAttribute("action"));
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+          alert(xhr.responseText);
+        }
+      };
+      xhr.send(formData);
+    });
+  </script>
+</body>
+</html>
