@@ -6,15 +6,15 @@
 </head>
 <body>
   <h1>Send POST Request</h1>
-  <form id="post-form" action="">
+  <form id="post-form" method="post">
     <label for="url-input">URL:</label>
-    <input type="text" id="url-input" name="url" required><br><br>
+    <input type="url" id="url-input" name="url" required><br><br>
     <label for="param-table">Parameters:</label>
     <table id="param-table">
       <tr>
         <td><input type="text" name="param-name[]" placeholder="Parameter Name"></td>
         <td><input type="text" name="param-value[]" placeholder="Parameter Value"></td>
-        <td><button type="button" onclick="addParamRow()">Add</button></td>
+        <td><button type="button" onclick="addRow('param-table', 'param-name[]', 'param-value[]')">Add</button></td>
       </tr>
     </table>
     <br>
@@ -23,7 +23,7 @@
       <tr>
         <td><input type="text" name="header-name[]" placeholder="Header Name"></td>
         <td><input type="text" name="header-value[]" placeholder="Header Value"></td>
-        <td><button type="button" onclick="addHeaderRow()">Add</button></td>
+        <td><button type="button" onclick="addRow('header-table', 'header-name[]', 'header-value[]')">Add</button></td>
       </tr>
     </table>
     <br>
@@ -31,25 +31,14 @@
   </form>
 
   <script>
-    function addParamRow() {
-      var table = document.getElementById("param-table");
+    function addRow(tableId, nameAttr, valueAttr) {
+      var table = document.getElementById(tableId);
       var newRow = table.insertRow();
       var nameCell = newRow.insertCell(0);
       var valueCell = newRow.insertCell(1);
       var buttonCell = newRow.insertCell(2);
-      nameCell.innerHTML = '<input type="text" name="param-name[]" placeholder="Parameter Name">';
-      valueCell.innerHTML = '<input type="text" name="param-value[]" placeholder="Parameter Value">';
-      buttonCell.innerHTML = '<button type="button" onclick="deleteRow(this)">Delete</button>';
-    }
-
-    function addHeaderRow() {
-      var table = document.getElementById("header-table");
-      var newRow = table.insertRow();
-      var nameCell = newRow.insertCell(0);
-      var valueCell = newRow.insertCell(1);
-      var buttonCell = newRow.insertCell(2);
-      nameCell.innerHTML = '<input type="text" name="header-name[]" placeholder="Header Name">';
-      valueCell.innerHTML = '<input type="text" name="header-value[]" placeholder="Header Value">';
+      nameCell.innerHTML = '<input type="text" name="' + nameAttr + '" placeholder="Parameter Name">';
+      valueCell.innerHTML = '<input type="text" name="' + valueAttr + '" placeholder="Parameter Value">';
       buttonCell.innerHTML = '<button type="button" onclick="deleteRow(this)">Delete</button>';
     }
 
@@ -61,11 +50,22 @@
     var form = document.getElementById("post-form");
     form.addEventListener("submit", function(event) {
       event.preventDefault();
-      var formData = new FormData(form);
+      var formData = new FormData();
+      var url = form.elements.url.value;
+      var params = form.elements["param-name[]"];
+      var paramValues = form.elements["param-value[]"];
+      for (var i = 0; i < params.length; i++) {
+        formData.append(params[i].value, paramValues[i].value);
+      }
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", form.getAttribute("action"));
+      xhr.open("POST", url);
+      var headers = form.elements["header-name[]"];
+      var headerValues = form.elements["header-value[]"];
+      for (var i = 0; i < headers.length; i++) {
+        xhr.setRequestHeader(headers[i].value, headerValues[i].value);
+      }
       xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        if (xhr.readyState === 4) {
           alert(xhr.responseText);
         }
       };
