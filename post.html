@@ -14,7 +14,16 @@
       <tr>
         <td><input type="text" name="param-name[]" placeholder="Parameter Name"></td>
         <td><input type="text" name="param-value[]" placeholder="Parameter Value"></td>
-        <td><button type="button" onclick="addRow()">Add</button></td>
+        <td><button type="button" onclick="addParamRow()">Add</button></td>
+      </tr>
+    </table>
+    <br>
+    <label for="header-table">Headers:</label>
+    <table id="header-table">
+      <tr>
+        <td><input type="text" name="header-name[]" placeholder="Header Name"></td>
+        <td><input type="text" name="header-value[]" placeholder="Header Value"></td>
+        <td><button type="button" onclick="addHeaderRow()">Add</button></td>
       </tr>
     </table>
     <br>
@@ -22,7 +31,7 @@
   </form>
 
   <script>
-    function addRow() {
+    function addParamRow() {
       var table = document.getElementById("param-table");
       var newRow = table.insertRow();
       var nameCell = newRow.insertCell(0);
@@ -30,6 +39,17 @@
       var buttonCell = newRow.insertCell(2);
       nameCell.innerHTML = '<input type="text" name="param-name[]" placeholder="Parameter Name">';
       valueCell.innerHTML = '<input type="text" name="param-value[]" placeholder="Parameter Value">';
+      buttonCell.innerHTML = '<button type="button" onclick="deleteRow(this)">Delete</button>';
+    }
+
+    function addHeaderRow() {
+      var table = document.getElementById("header-table");
+      var newRow = table.insertRow();
+      var nameCell = newRow.insertCell(0);
+      var valueCell = newRow.insertCell(1);
+      var buttonCell = newRow.insertCell(2);
+      nameCell.innerHTML = '<input type="text" name="header-name[]" placeholder="Header Name">';
+      valueCell.innerHTML = '<input type="text" name="header-value[]" placeholder="Header Value">';
       buttonCell.innerHTML = '<button type="button" onclick="deleteRow(this)">Delete</button>';
     }
 
