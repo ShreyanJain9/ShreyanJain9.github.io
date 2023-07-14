@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<title>Thoughts on Sam Wright’s AT Protocol Criticisms</title>
+	</head>
+<body>
+<h1>Thoughts on Sam Wright’s AT Protocol Criticisms</h1>
+
+<p><a href="https://urbanists.social/@sam/110339902538138997">https://urbanists.social/@sam/110339902538138997</a></p>
+
+<p>Let me start by making a list of his claims. </p>
+
+<blockquote>
+<p>Fucking Christ the @protocol is the most obtuse crock of shit I&#39;ve ever looked at. It is complex solely for the sake of being complex and still suffers from <em>all</em> of the same problems as Mastodon.</p>
+</blockquote>
+
+<blockquote>
+<p>Your server goes down? Sorry, all of your followers are lost. Account portability is no better than Mastodon. &#39;DIDs&#39; serve literally no purpose. And none of the API code that Bluesky uses in their own app validates ANY of the crypto they&#39;re doing on the server. NONE OF IT. — @sam@urbanists.social </p>
+</blockquote>
+
+<ol>
+	<li>Your server goes down? All your followers are lost. </li>
+	<li>Account portability is no better than Mastodon.</li>
+	<li>DIDs serve no purpose.</li>
+	<li>Crypto on the server not validated in the app</li>
+</ol>
+
+<h3>Your server goes down? All your followers are lost.</h3>
+
+<p>Not. In fact, this directly ties in to the idea that DIDs serve no purpose. Your server going down does <em>not</em> mean that all your followers are lost, because they don’t follow your account on the server itself. Instead, they have, in AT Protocol terminology, a “follow” record that points towards an imaginary document called a DID Document. This DID is basically your entire identity on the AT Protocol. It looks like this: did:plc:ofpi7p2eniusp5ckakb52p76 </p>
+
+<p>Now, there are many valid criticisms of DIDs, including that the kind BlueSky uses, DID:PLC, is extremely centralized. Every DID:PLC document is stored at a central registry, plc.directory. You can view a DID Document at <a href="https://plc.directory/did:plc:ofpi7p2eniusp5ckakb52p76" title="https://plc.directory/did:plc:ofpi7p2eniusp5ckakb52p76">https://plc.directory/did:plc:ofpi7p2eniusp5ckakb52p76 </a>, for the example of my DID. This JSON document is what other people actually follow when they follow you, and it will have something that looks like the following in it:</p>
+
+<pre><code class="code-highlighted code-json">service: 
+	[
+		{
+			<span class="syntax-all syntax-error">id</span>: <span class="syntax-all syntax-string">&quot;#atproto_pds&quot;</span>,
+			<span class="syntax-all syntax-error">type</span>: <span class="syntax-all syntax-string">&quot;AtprotoPersonalDataServer&quot;</span>,
+			<span class="syntax-all syntax-error">serviceEndpoint</span>: <span class="syntax-all syntax-string">&quot;https://bsky.social&quot;</span>
+		}
+	]</code></pre>
+
+<p>This tells everybody which ATProto server your data is actually stored at, and where clients and/or your server should look for it. So even if your server goes down, the DID which people actually follow is still there, and once you’ve moved to a new server, you simply use your recovery key to update your DID document to point to a new <code>serviceEndpoint</code>. </p>
+
+<p>This is by no means a perfect system, especially since it forces everyone to rely on a central registry (plc.directory), and also forces people to keep a recovery key safe with them. Plus, if you want to restore all your actual <em>posts</em> and following list, etc, you have to keep a local backup of them in a CAR file. However, in <em>my</em> opinion, that is still a better system than the current state of things with Mastodon and ActivityPub, where there is <em>no</em> standard way to restore all your data between servers. </p>
+
+<h3>Account portability is no better than Mastodon. </h3>
+
+<p>I may accidentally have started to address this while rebutting the previous point. But let me go a bit more in-depth here. </p>
+
+<p>Since Sam brings up Mastodon specifically, rather than the Fediverse </p>
+
+</body>
+</html>
+
